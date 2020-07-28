@@ -14,26 +14,26 @@ import java.util.concurrent.TimeUnit;
 public class ExtendedExecutor extends ThreadPoolExecutor {
 
 
-    public ExtendedExecutor() {
-        super(5, 10, 10, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(1000));
-    }
+	public ExtendedExecutor() {
+		super(5, 10, 10, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(1000));
+	}
 
-    // 这可是jdk文档里面给的例子。。
-    @Override
-    protected void afterExecute(Runnable r, Throwable t) {
-        super.afterExecute(r, t);
-        if (t == null && r instanceof Future<?>) {
-            try {
-                Object result = ((Future<?>) r).get();
-            } catch (CancellationException ce) {
-                t = ce;
-            } catch (ExecutionException ee) {
-                t = ee.getCause();
-            } catch (InterruptedException ie) {
-                Thread.currentThread().interrupt(); // ignore/reset
-            }
-        }
-        if (t != null)
-            System.out.println(t);
-    }
+	// 这可是jdk文档里面给的例子。。
+	@Override
+	protected void afterExecute(Runnable r, Throwable t) {
+		super.afterExecute(r, t);
+		if (t == null && r instanceof Future<?>) {
+			try {
+				Object result = ((Future<?>) r).get();
+			} catch (CancellationException ce) {
+				t = ce;
+			} catch (ExecutionException ee) {
+				t = ee.getCause();
+			} catch (InterruptedException ie) {
+				Thread.currentThread().interrupt(); // ignore/reset
+			}
+		}
+		if (t != null)
+			System.out.println(t);
+	}
 }

@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class DataDocument {
 
-	public static void shouldAnswerWithTrue() {
+	private static void shouldAnswerWithTrue() {
 		//数据源
 		HikariConfig hikariConfig = new HikariConfig();
 		hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
