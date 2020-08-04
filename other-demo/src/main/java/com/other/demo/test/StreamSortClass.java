@@ -9,6 +9,8 @@ import static java.util.stream.Collectors.toList;
 /**
  * stream排序(对象的多个属性)
  *https://www.cnblogs.com/kuanglongblogs/p/11230250.html
+ * Comparator.comparing(类属性一).reversed() 是得到正序结果后再逆序，
+ * Comparator.comparing(类属性一,Comparator.reverseOrder()); 直接逆序
  *
  * @author guoyj
  * @date 2020/7/23 18:34
