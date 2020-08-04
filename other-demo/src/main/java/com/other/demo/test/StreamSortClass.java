@@ -8,6 +8,7 @@ import static java.util.stream.Collectors.toList;
 
 /**
  * stream排序(对象的多个属性)
+ *https://www.cnblogs.com/kuanglongblogs/p/11230250.html
  *
  * @author guoyj
  * @date 2020/7/23 18:34
