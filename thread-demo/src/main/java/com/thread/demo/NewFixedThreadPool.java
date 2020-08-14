@@ -1,6 +1,7 @@
 package com.thread.demo;
 
-import com.demo.util.ThreadPoolUtil;
+
+import com.thread.demo.util.ThreadPoolUtil;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

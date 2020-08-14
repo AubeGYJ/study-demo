@@ -1,9 +1,11 @@
 package com.other.demo.test;
 
 import com.alibaba.fastjson.JSON;
+import lombok.Data;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 
 /**
  * org.apache.commons.beanutils.BeanUtils
@@ -16,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 public class TestApacheBeanUtils {
 	public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
 		//下面只是用于单独测试
-		PersonSource personSource = new PersonSource(1, "pjmike", "12345", 21);
+		PersonSource personSource = new PersonSource(1, "pjmike", "12345", 21, new Date());
 		PersonDest personDest = new PersonDest();
 		BeanUtils.copyProperties(personDest, personSource);
 		System.out.println(JSON.toJSONString(personDest));
@@ -30,12 +32,22 @@ class PersonSource {
 	private String username;
 	private String password;
 	private Integer age;
+	private Date brith;
 
-	public PersonSource(Integer id, String username, String password, Integer age) {
+	public PersonSource(Integer id, String username, String password, Integer age, Date brith) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.age = age;
+		this.brith = brith;
+	}
+
+	public Date getBrith() {
+		return brith;
+	}
+
+	public void setBrith(Date brith) {
+		this.brith = brith;
 	}
 
 	public Integer getId() {
@@ -75,6 +87,19 @@ class PersonDest {
 	private Integer id;
 	private String username;
 	private Integer age;
+	private String brith;
+
+	public PersonDest() {
+		super();
+	}
+
+	public String getBrith() {
+		return brith;
+	}
+
+	public void setBrith(String brith) {
+		this.brith = brith;
+	}
 
 	public Integer getId() {
 		return id;
@@ -105,7 +130,8 @@ class PersonDest {
 		return "PersonDest{" +
 			"id=" + id +
 			", username='" + username + '\'' +
-			", age=" + age +
+			", age=" + age + '\'' +
+			", brith=" + brith +
 			'}';
 	}
 }
